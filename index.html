@@ -20,21 +20,6 @@
             text-align: center;
         }
 
-        /* 네비게이션 아래 사각형 사진 스타일 */
-        .main-photo-container {
-            max-width: 900px;
-            margin: 25px auto 0 auto;
-            text-align: center;
-        }
-        .main-photo {
-            width: 100%;
-            max-width: 100px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
         nav {
             background: #fff;
             padding: 15px;
@@ -63,12 +48,32 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* [수정] 소개 및 연락처 문단을 다른 리스트(li) 스타일과 통일 */
+        /* [수정] 소개 섹션 레이아웃: 사진을 오른쪽으로 */
+        .intro-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .intro-text {
+            flex: 1;
+        }
+        .intro-photo-container {
+            flex-shrink: 0;
+        }
+        .main-photo {
+            width: 180px; /* 적절한 고정 사이즈 설정 */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+            display: block;
+        }
+
         #about p, #contact p {
             margin-top: 0;
-            margin-bottom: 8px; /* 리스트의 간격과 동일하게 설정 */
-            font-size: 0.95rem;  /* 리스트 글자 크기와 통일 */
-            line-height: 1.6;    /* 전체 줄간격과 통일 */
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         h2 {
@@ -107,6 +112,19 @@
             font-size: 0.85rem;
             color: #888;
         }
+
+        /* 모바일 대응: 화면이 좁아지면 사진이 아래로 내려가게 설정 */
+        @media (max-width: 600px) {
+            .intro-wrapper {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            .main-photo {
+                width: 150px;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -123,16 +141,19 @@
         <a href="#contact">연락처</a>
     </nav>
 
-    <div class="main-photo-container">
-        <img src="myphoto.jpg" alt="조성민 교수 프로필 사진" class="main-photo">
-    </div>
-
     <div class="container" id="about">
-        <h2>소개</h2>
-        <p>안녕하세요, 조성민입니다.</p>
-        <p>서울사이버대학교 실용음악과에서 학생들을 지도하며, 연주, 교육, 콘텐츠 제작을 함께 이어가고 있습니다.</p>
-        <p>AI와 에듀테크를 음악교육에 접목해, 학습자에게 실용적인 피드백을 제공하는 방법에 관심이 많습니다.</p>
-        <p>현장 경험과 연구 결과를 연결해 '배우기 쉬운 음악교육'의 실현을 목표로 하고 있습니다.</p>
+        <div class="intro-wrapper">
+            <div class="intro-text">
+                <h2>소개</h2>
+                <p>안녕하세요, 조성민입니다.</p>
+                <p>서울사이버대학교 실용음악과에서 학생들을 지도하며, 연주, 교육, 콘텐츠 제작을 함께 이어가고 있습니다.</p>
+                <p>AI와 에듀테크를 음악교육에 접목해, 학습자에게 실용적인 피드백을 제공하는 방법에 관심이 많습니다.</p>
+                <p>현장 경험과 연구 결과를 연결해 '배우기 쉬운 음악교육'의 실현을 목표로 하고 있습니다.</p>
+            </div>
+            <div class="intro-photo-container">
+                <img src="myphoto.jpg" alt="조성민 교수 프로필 사진" class="main-photo">
+            </div>
+        </div>
     </div>
 
     <div class="container" id="projects">
@@ -253,12 +274,4 @@
     <div class="container" id="contact">
         <h2>📫 연락처</h2>
         <p>전화번호: 010-2472-3227</p>
-        <p>이메일: <a href="mailto:prof960@iscu.ac.kr" style="color: #3498db; text-decoration: none;">prof960@iscu.ac.kr</a></p>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Prof. Cho Sung Min. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+        <p>이메일: <a href="mailto:prof960@iscu.ac.kr" style="color: #3498db; text-decoration
