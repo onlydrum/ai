@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>조성민 홈페이지</title>
+    <title>조성민 홈페이지 | Seongmin Jo</title>
     <style>
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
@@ -18,6 +18,26 @@
             color: white;
             padding: 2rem 1rem;
             text-align: center;
+            position: relative;
+        }
+
+        /* 언어 선택 버튼 스타일 */
+        .lang-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.4);
         }
 
         nav {
@@ -48,13 +68,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* 소개 섹션 레이아웃: 4개 문장 전체와 사진을 나란히 배치 */
         .intro-container {
             position: relative;
         }
         .intro-lower-wrapper {
             display: flex;
-            align-items: center; /* 수직 중앙 정렬 - 사진이 4개 문장 중앙에 오게 함 */
+            align-items: center; 
             gap: 20px;
         }
         .intro-lower-text {
@@ -68,7 +87,7 @@
             object-fit: cover;
             display: block;
         }
-        #about p, #contact p {
+        #about p, #education p, #contact p {
             margin-top: 0;
             margin-bottom: 8px;
             font-size: 0.95rem;
@@ -112,6 +131,9 @@
             color: #888;
         }
 
+        /* 언어별 노출 제어 */
+        .lang-en { display: none; }
+
         @media (max-width: 600px) {
             .intro-lower-wrapper {
                 flex-direction: row; 
@@ -122,26 +144,41 @@
 <body>
 
     <header>
-        <h1>조성민</h1>
-        <p>서울사이버대학교 실용음악과 교수</p>
+        <div class="lang-switch">
+            <button class="lang-btn" onclick="setLanguage('ko')">KOR</button>
+            <button class="lang-btn" onclick="setLanguage('en')">ENG</button>
+        </div>
+        <h1 class="lang-ko">조성민</h1>
+        <h1 class="lang-en">Seongmin Jo</h1>
+        <p class="lang-ko">서울사이버대학교 실용음악과 교수</p>
+        <p class="lang-en">Professor of Applied Music at Seoul Cyber University</p>
     </header>
 
     <nav>
-        <a href="#about">소개</a>
-        <a href="#projects">경력</a>
-        <a href="#research">연구실적</a>
-        <a href="#contact">연락처</a>
+        <a href="#about"><span class="lang-ko">소개</span><span class="lang-en">About</span></a>
+        <a href="#projects"><span class="lang-ko">경력</span><span class="lang-en">Experience</span></a>
+        <a href="#research"><span class="lang-ko">연구실적</span><span class="lang-en">Research</span></a>
+        <a href="#contact">CONTACT</a>
     </nav>
 
     <div class="container" id="about">
-        <h2>소개</h2>
+        <h2 class="lang-ko">소개</h2>
+        <h2 class="lang-en">About Me</h2>
         <div class="intro-container">
             <div class="intro-lower-wrapper">
                 <div class="intro-lower-text">
-                    <p>안녕하세요, 조성민입니다.</p>
-                    <p>서울사이버대학교 실용음악과에서 학생들을 지도하며, 연주, 교육, 콘텐츠 제작을 함께 이어가고 있습니다.</p>
-                    <p>AI와 에듀테크를 음악교육에 접목해, 학습자에게 효과적이고 효율적인 음악교육 제공하고자 합니다. </p>
-                    <p>현장 경험과 연구 결과를 연결해 '배우기 쉬운 음악교육'의 실현을 목표로 하고 있습니다.</p>
+                    <div class="lang-ko">
+                        <p>안녕하세요, 조성민입니다.</p>
+                        <p>서울사이버대학교 실용음악과에서 학생들을 지도하며, 연주, 교육, 콘텐츠 제작을 함께 이어가고 있습니다.</p>
+                        <p>AI와 에듀테크를 음악교육에 접목해, 학습자에게 효과적이고 효율적인 음악교육 제공하고자 합니다.</p>
+                        <p>현장 경험과 연구 결과를 연결해 '배우기 쉬운 음악교육'의 실현을 목표로 하고 있습니다.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>Hello, I am Sung Min Cho.</p>
+                        <p>I teach students in the Department of Applied Music at Seoul Cyber University, while continuing my work in performance, education, and content creation.</p>
+                       <p>By integrating AI and EduTech into music education, I aim to provide effective and efficient music learning experiences.</p>
+                       <p> My goal is to realize 'accessible music education' by bridging field experience with research outcomes.</p>
+                    </div>
                 </div>
                 <div class="intro-photo-container">
                     <img src="myphoto.jpg" alt="조성민 교수 프로필 사진" class="main-photo">
@@ -150,27 +187,58 @@
         </div>
     </div>
 
+    <div class="container" id="education">
+        <h2 class="lang-ko">학력</h2>
+        <h2 class="lang-en">Education</h2>
+        <ul class="lang-ko">
+            <li>서울대학교, 교육공학 박사</li>
+            <li>New York University, Jazz Studies-Performance(drums) 음악 석사</li>
+            <li>Berklee College of Music, Performance(drums) 음악 학사</li>
+        </ul>
+        <ul class="lang-en">
+            <li>Seoul National University, Educational Technology, Ph.D</li>
+            <li>New York University, Jazz Studies-Performance(Drums), M.M</li>
+            <li>Berklee College of Music, Performance(Drums), B.M</li>
+        </ul>
+    </div>
+
     <div class="container" id="projects">
-        <h2>경력</h2>
-        <ul>
+        <h2 class="lang-ko">경력</h2>
+        <h2 class="lang-en">Experience</h2>
+        <ul class="lang-ko">
             <li>서울시, 서울드럼페스티벌 자문위원 및 심사위원</li>
             <li>서울문화재단, 동아리네트워크 자문위원 및 심사위원</li>
             <li>한국저작권위원회, 국민저작물 보물찾기 자문위원</li>
             <li>국민권익위원회, 국민참여 청렴콘텐츠 공모전 심사위원</li>
             <li>해양경찰청, 해양경찰 노래 공모전 심사위원</li>
-            <li>네이버(주), 지식백과(악기백과) 집필진</li>
-            <li>한국음악교육공학회 평생회원, 한국예술교육학회 평생회원</li>
+            <li>네이버(주), 지식백과/ 악기백과 집필진</li>
+            <li>한국음악교육공학회 평생회원, 한국예술교육학회 평생회원, 대중음악콘텐츠학회 정회원, 한국음악실연자연합회 회원, 한국음악저작권협회 회원</li>
             <li>한국우쿨렐레음악교육협회 이사</li>
             <li>Dulwich College International School Music Department Instructor</li>
-            <li>성신여대, 백석예술대, 강서대, 숭실대, 총신대, 수원여대 등 강사 역임</li>
+            <li>성신여자대학교, 백석예술대학교, 강서대학교, 숭실대학교, 총신대학교, 수원여자대학교, 서울신학대학교 강사 역임</li>
+        </ul>
+        <ul class="lang-en">
+            <li>Advisory & Jury Member, Seoul Drum Festival, Seoul Metropolitan Government</li>
+            <li>Advisory & Jury Member, Club Network, Seoul Foundation for Arts and Culture</li>
+            <li>Advisory Member, National Copyright Treasure Hunt, Korea Copyright Commission</li>
+            <li>Jury Member, Anti-Corruption Content Contest, Anti-Corruption & Civil Rights Commission</li>
+            <li>Jury Member, Korea Coast Guard Song Contest, Korea Coast Guard</li>
+            <li>Writer, Instrument Encyclopedia, Naver Corp</li>
+            <li>Lifetime Member of the Korean Society for Music Education Technology and the Korea Association of Arts Education</li>
+            <li>Regular Member of the Popular Music Contents Society</li>
+            <li>Member of the Federation of Korean Music Performers and the Korea Music Copyright Association</li>
+            <li>Director, Korea Ukulele Music Education Association</li>
+            <li>Instructor, Music Department, Dulwich College International School</li>
+            <li>Former Lecturer at Sungshin Women's University, Baekseok Arts University, Kangseo University, Soongsil University, Chongshin University, Suwon Women's University, Seoul Theological University</li>
         </ul>
     </div>
 
     <div class="container" id="research">
-        <h2>연구 실적</h2>
+        <h2 class="lang-ko">연구 실적</h2>
+        <h2 class="lang-en">Research & Performance</h2>
         <div class="research-content">
-            <h3>💿 발표 앨범</h3>
-            <ul>
+            <h3>💿 <span class="lang-ko">발표 앨범</span><span class="lang-en">Released Albums</span></h3>
+            <ul class="lang-ko">
                 <li>퓨전재즈밴드 블루솔트 1집 앨범 - ‘Blue Salt’ 발표</li>
                 <li>퓨전재즈밴드 블루솔트 2집 앨범 - ‘Take Off’ 발표</li>
                 <li>힘날밴드 1집 앨범 - ‘Hymnal Band’ 발표</li>
@@ -178,9 +246,18 @@
                 <li>Band V 앨범 - ‘Jazz Worship’ 발표</li>
                 <li>크리스마스 재즈 트리오 1집 앨범 - ‘Winter To Spring’ 발표</li>
             </ul>
+            <ul class="lang-en">
+                <li>Blue Salt 1st Album - 'Blue Salt'</li>
+                <li>Blue Salt 2nd Album - 'Take Off'</li>
+                <li>Hymnal Band 1st Album - 'Hymnal Band'</li>
+                <li>Hymnal Band 2nd Album - 'The Hymnal Band'</li>
+                <li>Band V Album - 'Jazz Worship'</li>
+                <li>Christmas Jazz Trio 1st Album - 'Winter To Spring'</li>
+            </ul>
 
-            <h3>💿 참여 앨범</h3>
-            <ul>
+            <h3>💿 <span class="lang-ko">참여 앨범</span><span class="lang-en">Recording Session</span></h3>
+            <ul class="lang-ko">
+                 <li>양희은 앨범 - ‘2014 양희은’ 녹음</li>
                 <li>재즈보컬 김형미 2집 앨범 - ‘가고파’ 녹음</li>
                 <li>Dreaming Butterfly 앨범 - ‘너무 늦지 않았다면’ 녹음</li>
                 <li>‘True Worshipers 12’ 1집 앨범 - ‘아벨의 제사’ 녹음</li>
@@ -202,9 +279,31 @@
                 <li>Key J 앨범 - ‘Morning' 녹음</li>
                 <li>이종길 앨범 - ‘When I see your face’ 녹음</li>
             </ul>
-
-            <h3>🎸 공연 및 방송</h3>
-            <ul>
+           <ul class="lang-en">
+    <li>Hee-eun Yang Album - Recording for ‘2014 Hee-eun Yang’</li>
+    <li>Jazz Vocalist Hyung-mi Kim 2nd Album - Recording for ‘Gagopa’</li>
+    <li>Dreaming Butterfly Album - Recording for ‘If It’s Not Too Late’</li>
+    <li>True Worshipers 12/ 1st Album - Recording for ‘Abel’s Offering’</li>
+    <li>Musical ‘Grease’ OST Album Recording & Performance</li>
+    <li>Musical ‘I Love Showboat’ Recording & Performance (Millennium Hall)</li>
+    <li>Merry Jane 2nd Album - Recording for ‘Perfect love 2’</li>
+    <li>Hanjin Lee Band 1st Album - Recording for ‘Devotion’</li>
+    <li>Jung-yoon Joo 1st Album - Recording for ‘My Utmost’</li>
+    <li>Byung-ho Kang 1st Album - Recording for ‘Promise’</li>
+    <li>JCCM 1st Album - Recording for ‘The Heart of a Worshiper’</li>
+    <li>Hanna 1st Album - Recording for ‘Where The Wind Blows’</li>
+    <li>Young-ha Yoo 1st Album - Recording for ‘Curious’</li>
+    <li>Joo-hyun Park & Ri-kyung Kang Album - Recording for ‘Encounter of Jazz Guitar and Haegeum’</li>
+    <li>Music Group ‘Noriter’ Prenatal Education Album - Recording for ‘Poom (Embrace)’</li>
+    <li>Ji-eun Kim 2nd Album - Recording for ‘Crossover Me’</li>
+    <li>Ji-hyun Ory 1st Album - Recording for ‘Cheong-gong (Blue Sky)’</li>
+    <li>Ji-hyun Ory 2nd Album - Recording for ‘Timeless’</li>
+    <li>Bethel Glory Album - Recording for ‘Bride Generation’</li>
+    <li>Key J Album - Recording for ‘Morning’</li>
+    <li>Jong-gil Lee Album - Recording for ‘When I see your face’</li>
+</ul>
+            <h3>🎸 <span class="lang-ko">공연</span><span class="lang-en">Concerts</span></h3>
+            <ul class="lang-ko">
                 <li>가수 디셈버 콘서트 공연(코엑스 오디토리엄)</li>
                 <li>가수 최진희 디너쇼 공연(인터컨티넨탈 호텔)</li>
                 <li>가수 David Choi 아시아투어 한국 공연</li>
@@ -224,23 +323,55 @@
                 <li>전지현 Ory - ‘Passion, Excitement’ 공연(KOUS 문화의집)</li>
                 <li>전지현 Ory - ‘디오니소스와 함께’ 공연(국립부산국악원)</li>
             </ul>
-
-            <h3>🎸 드라마 / 방송</h3>
-            <ul>
+           <ul class="lang-en">
+    <li>Singer 'December' Concert Performance (COEX Auditorium)</li>
+    <li>Singer 'Choi Jin-hee' Dinner Show Performance (InterContinental Hotel)</li>
+    <li>Singer 'David Choi' Asia Tour - Korea Concert Performance</li>
+    <li>Singer 'Park Sun-joo' Daehak-ro Concert Performance</li>
+    <li>Musical ‘Monte Cristo’ 78 Performances (Chungmu Art Center) Feat. Im Tae-kyung, Ryu Jung-han, Um Ki-joon</li>
+    <li>Music Drama ‘Seoul Arirang through Dance’ Performance (Sejong Center) Feat. Jeong Tae-chun, Nochatsa</li>
+    <li>Music Group ‘Noriter’ - ‘Yeoha, I Ask of You’ Performance (National Theater of Korea)</li>
+    <li>Music Group ‘Noriter’ - ‘Noriter Music Story’ Performance (Yeongdeungpo Art Hall)</li>
+    <li>Brazilian Jazz Band ‘Souplus’ Performance (Calamaria Hall)</li>
+    <li>Sacheon World Percussion Festival (2013) - Percussion Group ‘Heba’ Performance</li>
+    <li>Greenplugged Festival (2012) - Band ‘Coney Island’ Performance</li>
+    <li>The Men’s Choir 6th Regular Concert Performance (Seoul Arts Center)</li>
+    <li>The Men’s Choir 8th Regular Concert Performance (Seoul Arts Center)</li>
+    <li>Jazz Vocalist Hyung-mi Kim - ‘Gagopa’ Performance (Bear Hall)</li>
+    <li>Yang Gang-seok - ‘Healing Concert’ Performance (Geumjeong Cultural Center)</li>
+    <li>Yang Gang-seok - ‘Falling In Love’ Performance (Cheongju Arts Center)</li>
+    <li>Ji-hyun Ory - ‘Passion, Excitement’ Performance (KOUS Cultural House)</li>
+    <li>Ji-hyun Ory - ‘With Dionysus’ Performance (National Busan Gukak Center)</li>
+</ul>
+<h3>🎸 <span class="lang-ko">드라마 / 방송</span><span class="lang-en">Drama OST & Broadcasts</span></h3>
+            
+            <ul class="lang-ko">
                 <li>드라마 ‘무신’ - 박완규 ‘이별길’, J-Min ‘시공천애’ 등 OST 녹음</li>
                 <li>드라마 ‘여왕의 교실’ - 잉거마리‘I Will Be Yours’ 등 OST 녹음</li>
                 <li>고현정 쇼(GO SHOW) - 윤미래 밴드 방송</li>
-                <li>가수 신효범 공연 방송 (MBC)</li>
+                <li>아름다운 음악세상(MBC) - 가수 신효범 공연 방송</li>
                 <li>Saturday Night Live Korea(TVN) - 최민수 36.5 밴드 방송</li>
                 <li>국악한마당 1161회 - ‘내 마음의 따스한 봄바람’ 방송(KBS홀)</li>
                 <li>국악한마당 995회 - ‘박경훈의 감성 음악회’ 방송(KBS홀)</li>
                 <li>국악콘서트 판 5회 - ‘Dancing Ory’ 방송(국악방송)</li>
             </ul>
 
-            <h3>📝 논문 및 학회 발표</h3>
-            <ul>
-                <li>“Analysis of Harmonic Trends in Korean Popular Music for Practical Music Harmony Education", Journal of Popular Music Contents(2025), Vol.9, No.2, pp.1-18.
-                <li>"Design-Based Case Study of JoB+AI Model, Journal of Future Society", Journal of Future Society(2025), Vol. 16, No. 1, pp.192-208.</li>
+            <ul class="lang-en">
+                <li>TV Drama ‘God of War’ - OST Recording for Wan-kyu Park's ‘Farewell Road’, J-Min's ‘Sky-High Love’, etc.</li>
+                <li>TV Drama ‘The Queen's Classroom’ - OST Recording for Inger Marie's ‘I Will Be Yours’, etc.</li>
+                <li>Go Hyun-jung Show (GO SHOW) - Performance with Yoon Mi-rae Band</li>
+                <li>Beautiful Music World (MBC) - Performance Broadcast with Singer Shin Hyo-bum</li>
+                <li>Saturday Night Live Korea (tvN) - Performance Broadcast with Choi Min-soo 36.5 Band</li>
+                <li>Gugak Hanmadang Ep. 1161 - ‘Warm Spring Breeze in My Heart’ Broadcast (KBS Hall)</li>
+                <li>Gugak Hanmadang Ep. 995 - ‘Park Kyung-hoon's Emotional Concert’ Broadcast (KBS Hall)</li>
+                <li>Gugak Concert ‘Pan’ Ep. 5 - ‘Dancing Ory’ Broadcast (Gugak TV)</li>
+            </ul>
+
+<h3>📝 <span class="lang-ko">논문 및 학회 발표</span><span class="lang-en">Publications & Conferences</span></h3>
+            
+            <ul class="lang-ko">
+                <li>“Analysis of Harmonic Trends in Korean Popular Music for Practical Music Harmony Education", Journal of Popular Music Contents(2025), Vol.9, No.2, pp.1-18.</li>
+                <li>"Design-Based Case Study of JoB+AI Model", Journal of Future Society(2025), Vol. 16, No. 1, pp.192-208.</li>
                 <li>“드럼 교육에서의 합주 역량 증진을 위한 플립러닝 활용 사례연구”, 한국문화융합학회(2020) 제42권 5호, pp.621-647.</li>
                 <li>“음악교육에서의 스팻(SPAT) 기반 플립러닝의 활용 사례연구: 드럼 전공실기 수업을 중심으로”, 한국음악교육공학회(2017) 제30호, pp143-160.</li>
                 <li>Lecture-Grounded ChatGPT-4 Tutor: Enhancing Adult Learner Engagement in Distance Learning, EduCon Singapore(2025)</li>
@@ -251,39 +382,96 @@
                 <li>A Case Study on SPAT-based Flipped Learning in Music Education, International Conference on Education Research(2016)</li>
             </ul>
 
-            <h3>📋 프로젝트</h3>
-            <ul>
+            <ul class="lang-en">
+                <li>“Analysis of Harmonic Trends in Korean Popular Music for Practical Music Harmony Education", Journal of Popular Music Contents(2025), Vol.9, No.2, pp.1-18.</li>
+                <li>"Design-Based Case Study of JoB+AI Model", Journal of Future Society(2025), Vol. 16, No. 1, pp.192-208.</li>
+                <li>“A Case Study on Flipped Learning for Enhancement of Ensemble Competency in Drum Education”, Culture and Convergence(2020), Vol.42, No.5, pp.621-647.</li>
+                <li>“A Case Study on SPAT-based Flipped Learning in Music Education”, Journal of Music Education Science(2017), Vol.30, pp.143-160.</li>
+                <li>Lecture-Grounded ChatGPT-4 Tutor: Enhancing Adult Learner Engagement in Distance Learning, EduCon Singapore(2025)</li>
+                <li>The Application of AI Human Professor Models for Enhancing Online Learning Environments and Providing Immersive Educational Experiences, KSME(2025)</li>
+                <li>Development and Implementation of a Remote AI Competency Education Model for Disconnected Youth, The International Conference on Education and Language Learning in a Post-COVID World, Japan(2024)</li>
+                <li>Development of a Remote Instruction Model for Instrumental Music Education, Popular Music Contents Society(2024)</li>
+                <li>A Case Study of Flipped Learning in Rhythm Learning: Focused on Effects of Motivation and Self-efficacy, International Conference for Media in Education, Japan(2016)</li>
+                <li>A Case Study on SPAT-based Flipped Learning in Music Education, International Conference on Education Research(2016)</li>
+            </ul>
+
+<h3>📋 <span class="lang-ko">프로젝트</span><span class="lang-en">Projects</span></h3>
+            
+            <ul class="lang-ko">
                 <li>2024 문화동반자 사업, 문화전문가 및 문화행정가 연수, PM, 한국국제문화교류진흥원(2024)</li>
                 <li>2023 문화동반자 사업, 문화전문가 및 문화행정가 연수, PM, 한국국제문화교류진흥원(2024)</li>
                 <li>아시아 평화 구축을 위한 국제협력 교육 역량강화 온라인 연수 사업, KOICA(2021)</li>
                 <li>2020 문화동반자 문화전문가 공통교육 이러닝 콘텐츠 개발, PL, 한국국제문화교류진흥원(2020)</li>
             </ul>
 
-            <h3>📖 연구 과제</h3>
-            <ul>
+            <ul class="lang-en">
+                <li>2024 Cultural Partnership Initiative (CPI), Training for Cultural Experts and Administrators, PM, Korean Foundation for International Cultural Exchange (KOFICE) (2024)</li>
+                <li>2023 Cultural Partnership Initiative (CPI), Training for Cultural Experts and Administrators, PM, Korean Foundation for International Cultural Exchange (KOFICE) (2024)</li>
+                <li>Online Training Program for Strengthening International Cooperation Educational Capacity for Peacebuilding in Asia, KOICA (2021)</li>
+                <li>Development of E-learning Content for Common Education for Cultural Experts (CPI), PL, Korean Foundation for International Cultural Exchange (KOFICE) (2020)</li>
+            </ul>
+
+<h3>📖 <span class="lang-ko">연구 과제</span><span class="lang-en">Research Projects</span></h3>
+            
+            <ul class="lang-ko">
                 <li>2025 SCU LMS 고도화를 위한 수업모델 연구, 서울사이버대학교(2025)</li>
                 <li>2025 사이버대학 디지털 교육환경 고도화 지원 사업/ XR 콘텐츠 기획, 촬영 및 운영, 한국교육학술정보원(2025)</li>
                 <li>원격대학 자체진단 평가 위원회 참여/ 원격교육 수업영역 평가, 서울사이버대학교(2025)</li>
                 <li>2025 SCU 교원교육지원체계 개발 연구/ 공동 연구위원, 서울사이버대학교(2025)</li>
-                <li>원격대학 교육혁신 지원 사업, JoB+AI 교육과정 기획 및 운영, 한국교육학술정보원(2024)</li>
+                <li>원격대학 교육혁신 지원 사업/ JoB+AI 교육과정 기획 및 운영, 한국교육학술정보원(2024)</li>
                 <li>원격대학 교육 혁신 지원 사업, 역량기반 교육과정 연구 참여, 한국교육학술정보원(2024)</li>
                 <li>원격대학 교육혁신 지원 사업, 특성화 교육혁신 모델 개발/ On-Flex Teaching Model, 한국교육학술정보원(2021)</li>
                 <li>원격대학 교육혁신 지원 사업, 특성화 교육혁신 모델 개발/ PPBL 및 캡스톤디자인 연구, 한국교육학술정보원(2021)</li>
                 <li>모바일 어플리케이션 gglearn 콘텐츠 개발 및 운영, 서울대학교 교수학습개발센터(2016)</li>
             </ul>
+
+            <ul class="lang-en">
+                <li>Research on Instructional Models for 2025 SCU LMS Advancement, Seoul Cyber University (2025)</li>
+                <li>2025 Support Project for Advancing Digital Educational Environments in Cyber Universities / XR Content Planning, Filming, and Management, Korea Education and Research Information Service (KERIS) (2025)</li>
+                <li>Participation in the Remote University Self-Diagnosis Evaluation Committee / Evaluation of Remote Education Instructional Domains, Seoul Cyber University (2025)</li>
+                <li>Research on the Development of the 2025 SCU Faculty Education Support System / Joint Research Fellow, Seoul Cyber University (2025)</li>
+                <li>Remote University Educational Innovation Support Project / JoB+AI Curriculum Planning and Operation, Korea Education and Research Information Service (KERIS) (2024)</li>
+                <li>Remote University Educational Innovation Support Project / Participation in Competency-Based Curriculum Research, Korea Education and Research Information Service (KERIS) (2024)</li>
+                <li>Remote University Educational Innovation Support Project, Development of Specialized Educational Innovation Models / On-Flex Teaching Model, Korea Education and Research Information Service (KERIS) (2021)</li>
+                <li>Remote University Educational Innovation Support Project, Development of Specialized Educational Innovation Models / PPBL and Capstone Design Research, Korea Education and Research Information Service (KERIS) (2021)</li>
+                <li>Development and Operation of Content for the Mobile Application 'gglearn', Center for Teaching & Learning, Seoul National University (2016)</li>
+            </ul>
+
         </div>
     </div>
 
     <div class="container" id="contact">
-        <h2>📫 CONTACT</h2>
-        <p>이메일: <a href="mailto:prof960@iscu.ac.kr" style="color: #3498db; text-decoration: none;">prof960@iscu.ac.kr</a></p>
-        <p>연구실 전화번호: 02-944-5692</p>
-        <p>연구실 주소: 서울특별시 강북구 솔매로 49길 60, 서울사이버대학교 B동 440호</p>
+        <h2 class="lang-ko">📫 CONTACT</h2>
+        <h2 class="lang-en">📫 CONTACT</h2>
+        <p><span class="lang-ko">이메일</span><span class="lang-en">Email</span>: <a href="mailto:prof960@iscu.ac.kr" style="color: #3498db; text-decoration: none;">prof960@iscu.ac.kr</a></p>
+        <p><span class="lang-ko">연구실 전화번호: 02-944-5692</span><span class="lang-en">Office Phone: +82-2-944-5692</span></p>
+        <p><span class="lang-ko">연구실 주소: 서울특별시 강북구 솔매로 49길 60, 서울사이버대학교 B동 440호</span>
+           <span class="lang-en">Seoul Cyber University, 60 Solmae-ro 49-gil, Office #440, Building B,  Gangbuk-gu, Seoul, Korea</span></p>
     </div>
 
     <footer>
-        <p>&copy; 2025 조성민. All Rights Reserved.</p>
+        <p>&copy; 2025 <span class="lang-ko">조성민</span><span class="lang-en">Seongmin Jo</span>. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function setLanguage(lang) {
+            const koElements = document.querySelectorAll('.lang-ko');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (lang === 'ko') {
+                koElements.forEach(el => el.style.display = 'block');
+                // 인라인 요소(span 등) 처리를 위해 체크
+                document.querySelectorAll('span.lang-ko').forEach(el => el.style.display = 'inline');
+                enElements.forEach(el => el.style.display = 'none');
+                document.documentElement.lang = 'ko';
+            } else {
+                koElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                document.querySelectorAll('span.lang-en').forEach(el => el.style.display = 'inline');
+                document.documentElement.lang = 'en';
+            }
+        }
+    </script>
 
 </body>
 </html>
